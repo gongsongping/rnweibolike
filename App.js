@@ -1,11 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, ScrollView, FlatList, TextInput, KeyboardAvoidingView, TouchableHighlight, Modal} from 'react-native';
+import {StyleSheet, Text, View, Button, ScrollView, FlatList, TextInput, KeyboardAvoidingView, TouchableHighlight, Modal, Image} from 'react-native';
 import {observable, extendObservable} from 'mobx';
 import {observer} from 'mobx-react/native'
 import { StackNavigator, TabNavigator, TabBarBottom} from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Badge, SearchBar } from 'react-native-elements';
+
 
 // @observer
 const HomeScreen = observer(class HomeScreen extends React.Component {
@@ -252,7 +253,8 @@ const HomeStack = StackNavigator({
       title: '设备总览',
       gesturesEnabled: false,
       tabBarVisible: false
-  } },
+    } 
+  },
 });
 
 const MineStack = StackNavigator({
@@ -262,24 +264,41 @@ const MineStack = StackNavigator({
 
 export default TabNavigator(
   {
-    首页: { screen: HomeStack },
-    我的: { screen: MineStack },
+    首页: { 
+      screen: HomeStack,
+      // path: '/home',
+      navigationOptions: ({ navigation }) => ({
+        // tabBarLabel: 'Home',
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Image style={{width:27,height:23,position:'relative',right:1}} source={focused?(require('./img/home-on.png')):(require('./img/home-off.png'))} />  
+        }
+      }),
+    },
+    我的: { 
+      screen: MineStack,
+      // path: '/mine',
+      navigationOptions: ({ navigation }) => ({
+        // tabBarLabel: 'Mine',
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Image style={{width:27,height:23,position:'relative',right:1}} source={focused?(require('./img/mine-on.png')):(require('./img/mine-off.png'))} />
+        }
+      }),
+    },
   },
   {
-    /* Other configuration remains unchanged */
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
-        const { routeName } = navigation.state;
-        let iconName;
-        if (routeName === '首页') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-        } else if (routeName === '我的') {
-          iconName = `ios-options${focused ? '' : '-outline'}`;
-        }
-        // You can return any component that you like here! We usually use an
-        return <Ionicons name={iconName} size={25} color={tintColor} />;
-      },
-    }),
+    // navigationOptions: ({ navigation }) => ({
+    //   tabBarIcon: ({ focused, tintColor }) => {
+    //     const { routeName } = navigation.state;
+    //     let iconName;
+    //     if (routeName === '首页') {
+    //       iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+    //     } else if (routeName === '我的') {
+    //       iconName = `ios-options${focused ? '' : '-outline'}`;
+    //     }
+    //     // You can return any component that you like here! We usually use an
+    //     return <Ionicons name={iconName} size={25} color={tintColor} />;
+    //   }
+    // }),
     tabBarOptions: {
       activeTintColor: 'tomato',
       inactiveTintColor: 'gray',

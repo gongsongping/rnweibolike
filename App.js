@@ -168,7 +168,7 @@ const DetailsScreen = observer(class DetailsScreen extends React.Component {
 })
 
 // @observer
-const SettingsScreen = observer(class SettingsScreen extends React.Component {
+const MineScreen = observer(class MineScreen extends React.Component {
   // @observable list = [
   //   {key: 'Devin'},
   //   {key: 'Jackson'},
@@ -233,7 +233,7 @@ const SettingsScreen = observer(class SettingsScreen extends React.Component {
         </ScrollView>
         <FlatList
           data={this.list}
-          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+          renderItem={({item,index}) => <Text style={styles.item} key={index}>{item.key}</Text>}
           keyExtractor={(item, index) => index} 
           onEndReachedThreshold={0.5}
           onEndReached={this.loadMore}
@@ -255,15 +255,15 @@ const HomeStack = StackNavigator({
   } },
 });
 
-const SettingsStack = StackNavigator({
-  Settings: { screen: SettingsScreen },
+const MineStack = StackNavigator({
+  Mine: { screen: MineScreen },
   Details: { screen: DetailsScreen },
 });
 
 export default TabNavigator(
   {
-    Home: { screen: HomeStack },
-    Settings: { screen: SettingsStack },
+    首页: { screen: HomeStack },
+    我的: { screen: MineStack },
   },
   {
     /* Other configuration remains unchanged */
@@ -271,9 +271,9 @@ export default TabNavigator(
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'Home') {
+        if (routeName === '首页') {
           iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-        } else if (routeName === 'Settings') {
+        } else if (routeName === '我的') {
           iconName = `ios-options${focused ? '' : '-outline'}`;
         }
         // You can return any component that you like here! We usually use an

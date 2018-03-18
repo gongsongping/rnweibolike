@@ -170,77 +170,46 @@ const DetailsScreen = observer(class DetailsScreen extends React.Component {
 
 // @observer
 const MineScreen = observer(class MineScreen extends React.Component {
-  // @observable list = [
-  //   {key: 'Devin'},
-  //   {key: 'Jackson'},
-  //   {key: 'James'},
-  //   {key: 'Joel'},
-  //   {key: 'John'},
-  //   {key: 'Jillian'},
-  //   {key: 'Jimmy'},
-  //   {key: 'Julie'}
-  // ]
-
-  ls = [
-    {key: 'Devin'},
-    {key: 'Jackson'},
-    {key: 'James'},
-    {key: 'Joel'},
-    {key: 'John'},
-    {key: 'Jillian'},
-    {key: 'Jimmy'},
-    {key: 'Julie'}
-  ]
-
+  // @observable list = []
   constructor(props){
     super(props)
-    this.loadMore = this.loadMore.bind(this)
-    this.refresh = this.refresh.bind(this)
-    extendObservable(this, {
-      list: [
-        {key: 'Devin'},
-        {key: 'Jackson'},
-        {key: 'James'},
-        {key: 'Joel'},
-        {key: 'John'},
-        {key: 'Jillian'},
-        {key: 'Jimmy'},
-        {key: 'Julie'}
-      ]
-    }); 
   }
-  loadMore(){
-    console.log('loading'); 
-    this.list = this.list.concat(this.ls)
-  }
-  refreshing = false
-  refresh(){
-    this.refreshing = true
-    this.list = this.ls
-    this.refreshing = false
-    
-  }
+  
   render() {
     return (
-      <View>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}/>
-        <ScrollView>
-          <Text>Details Screen</Text>
-          <Text>Details Screen</Text>
-          <Text>Details Screen</Text>
-          <Text>Details Screen</Text>
-        </ScrollView>
-        <FlatList
-          data={this.list}
-          renderItem={({item,index}) => <Text style={styles.item} key={index}>{item.key}</Text>}
-          keyExtractor={(item, index) => index.toString()} 
-          onEndReachedThreshold={0.5}
-          onEndReached={this.loadMore}
-          refreshing={this.refreshing}
-          onRefresh={this.refresh}
-        />
+      <View style={{padding:5}}>
+        <TouchableHighlight
+          onPress={() => {
+              this.props.navigation.navigate('Details')
+          }}>
+          <View style={{flexDirection:'row', padding:3, borderBottomWidth:0.5, borderBottomColor: 'lightgrey'}}>
+            <View style={{flex:1, justifyContent:'center'}}>
+              <Icon name='cog' size={30} color='grey' />
+            </View>
+            <View style={{flex:6, justifyContent:'center'}}>
+              <Text>details</Text>
+            </View>
+            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+              <Icon name='arrow-right' color='grey' />
+            </View>
+          </View>
+        </TouchableHighlight>   
+        <TouchableHighlight
+          onPress={() => {
+              this.props.navigation.navigate('Test')
+          }}>
+          <View style={{flexDirection:'row', padding:3, borderBottomWidth:0.5, borderBottomColor: 'lightgrey'}}>
+            <View style={{flex:1, justifyContent:'center'}}>
+              <Icon name='archive' size={30} color='grey' />
+            </View>
+            <View style={{flex:6, justifyContent:'center'}}>
+              <Text>test</Text>
+            </View>
+            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+              <Icon name='arrow-right' color='grey' />
+            </View>
+          </View>
+        </TouchableHighlight>   
       </View>
     );
   }
@@ -573,7 +542,6 @@ const HomeStack = StackNavigator({
   },
   UserTweets: { screen: UserTweetsScreen, 
     navigationOptions: {
-      // title: '设备总览',
       gesturesEnabled: false,
       tabBarVisible: false
     } 
@@ -582,7 +550,18 @@ const HomeStack = StackNavigator({
 
 const MineStack = StackNavigator({
   Mine: { screen: MineScreen },
-  Details: { screen: DetailsScreen },
+  Details: { screen: DetailsScreen, 
+    navigationOptions: {
+      gesturesEnabled: false,
+      tabBarVisible: false
+    } 
+  },
+  Test: { screen: TestScreen,
+    navigationOptions: {
+      gesturesEnabled: false,
+      tabBarVisible: false
+    } 
+  }
 });
 
 export default TabNavigator(

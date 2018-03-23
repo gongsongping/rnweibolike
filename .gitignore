@@ -54,5 +54,4 @@ buck-out/
 /ios
 /android
 /img
-*.gif
-rnc*.png
+

@@ -10,11 +10,8 @@ how to use:
 - react-native run-ios
 
 
-![photo](rnc-1.png "logo")
----
-![photo](rnc-2.png "logo")
----
-![photo](rnc-3.png "logo")
+![photo](rnc-1.gif "logo")
+
 
 
 

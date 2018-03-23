@@ -182,9 +182,9 @@ const MineScreen = observer(class MineScreen extends React.Component {
           onPress={() => {
               this.props.navigation.navigate('Details')
           }}>
-          <View style={{flexDirection:'row', padding:3, borderBottomWidth:0.5, borderBottomColor: 'lightgrey'}}>
+          <View style={{padding:8, flexDirection:'row', borderBottomWidth:0.5, borderBottomColor: 'lightgrey'}}>
             <View style={{flex:1, justifyContent:'center'}}>
-              <Icon name='cog' size={30} color='grey' />
+              <Icon name='cog' size={20} color='grey' />
             </View>
             <View style={{flex:6, justifyContent:'center'}}>
               <Text>details</Text>
@@ -198,9 +198,9 @@ const MineScreen = observer(class MineScreen extends React.Component {
           onPress={() => {
               this.props.navigation.navigate('Test')
           }}>
-          <View style={{flexDirection:'row', padding:3, borderBottomWidth:0.5, borderBottomColor: 'lightgrey'}}>
+          <View style={{padding:8, flexDirection:'row', borderBottomWidth:0.5, borderBottomColor: 'lightgrey'}}>
             <View style={{flex:1, justifyContent:'center'}}>
-              <Icon name='archive' size={30} color='grey' />
+              <Icon name='archive' size={20} color='grey' />
             </View>
             <View style={{flex:6, justifyContent:'center'}}>
               <Text>test</Text>
@@ -572,7 +572,7 @@ export default TabNavigator(
       navigationOptions: ({ navigation }) => ({
         // tabBarLabel: 'Home',
         tabBarIcon: ({ focused, tintColor }) => {
-          return <Image style={{width:27,height:23,position:'relative',right:1}} source={focused?(require('./img/home-on.png')):(require('./img/home-off.png'))} />  
+          return <Image style={{width:27,height:23,position:'relative',right:1}} source={focused?(require('./assets/img/home-on.png')):(require('./assets/img/home-off.png'))} />  
         }
       }),
     },
@@ -582,7 +582,7 @@ export default TabNavigator(
       navigationOptions: ({ navigation }) => ({
         // tabBarLabel: 'Mine',
         tabBarIcon: ({ focused, tintColor }) => {
-          return <Image style={{width:27,height:23,position:'relative',right:1}} source={focused?(require('./img/mine-on.png')):(require('./img/mine-off.png'))} />
+          return <Image style={{width:27,height:23,position:'relative',right:1}} source={focused?(require('./assets/img/mine-on.png')):(require('./assets/img/mine-off.png'))} />
         }
       }),
     },

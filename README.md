@@ -6,12 +6,12 @@ how to use:
 - npm install react-native-cli -g
 - npm install 
 - react-native upgrade
-- react-native linkddd
+- react-native link
 - react-native run-ios
 
 
 ![photo](rnc-1.gif "logo")
-![photo](assets/img/icon.png "logo")
+<!-- ![photo](assets/img/icon.png "logo") -->
 
 
 

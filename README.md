@@ -11,6 +11,7 @@ how to use:
 
 
 ![photo](rnc-1.gif "logo")
+![photo](assets/img/icon.png "logo")
 
 
 

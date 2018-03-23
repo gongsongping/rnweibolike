@@ -9,29 +9,9 @@ how to use:
 - react-native linkddd
 - react-native run-ios
 
-+ kkd
-+ dd
+
+![photo](rnc-1.gif "logo")
 
 
-...kkkkd
 
-```python
-
-function(){
-
-}
-```
-
-| kk | lll |
-|----:|:----:|
-|kkkk| lll|
-|kkkk| lll|
-
-> kkkkkck kkkk kkk dddddddddddddcddfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdffdfd   
-
-> kkll
-
-kkkdkf
-
-![photo](assets/img/icon.png)
 
